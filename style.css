@@ -7,13 +7,21 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'NotoKufiArabic';
+  src: url('./fonts/NotoKufiArabic-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+
 
 body {
   font-family: 'PPNeueMontreal', sans-serif;
 }
 
 #top-bar {
-  background-color: #000000;        
+  background-color: #0D0D0D;
   color: #ffffff;                   
   width: 100%;
   height: 40px;                     
@@ -37,16 +45,23 @@ min-height:100px;
 height:auto;
 }
 
-.logo{
-height:100px;
-text-align:center;
-float:left;
+.logo {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 0;
 }
 
+
 .logo img{
-max-height:100px;
-height:auto;
-padding:10px;
+  height: 60px;
+  width: auto;
+  display: block;
+  margin-left: 0;
+  padding: 0;
+  object-fit: contain;
+  object-position: left center;
 }
 
 .menu{
@@ -69,8 +84,11 @@ letter-spacing: 0.5px;
 .navbar .navbar-collapse {
     display: flex !important;
     align-items: center !important;
-    line-height: 100px;
-    height: 100px;
+}
+
+.navbar {
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
 }
 
 .slider-image {
@@ -233,4 +251,111 @@ text-align:center;
 color:#ffffff;
 font-size: 11px;
 }
+
+.navbar {
+  background-color: #0D0D0D !important;
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand {
+  color: #ffffff !important;
+}
+
+.navbar-brand,
+.navbar-text {
+  color: #ffffff !important;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.navbar-brand {
+  padding-left: 0 !important;
+  margin-left: -12px !important;
+}
+
+.navbar .nav-link:hover {
+  color: #dfe9f5 !important;
+}
+
+.navbar form {
+  margin-bottom: 0 !important;
+}
+
+/* Language switch button */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.lang-switch a {
+  color: #ffffff;  /* 白色文字，和你的 navbar 匹配 */
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0 4px;
+}
+
+.lang-switch a:hover {
+  color: #dfe9f5;  /* 和菜单 hover 保持一致 */
+}
+
+.lang-switch a.active {
+  text-decoration: underline;   /* 高亮样式 */
+}
+
+/* MMTA Button */
+.mmta-btn {
+  background-color: #005FC4;
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  height: 38px; /* 与 search 输入框匹配 */
+  cursor: pointer;
+}
+
+.mmta-text {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 20px; /* 比搜索框文字更大 */
+  margin-right: 60px;
+  line-height: 1;
+}
+
+.mmta-icon {
+  height: 20px;           /* 和文字齐平 */
+  width: auto;
+  display: block;
+  margin-top: -1px;       /* 让图标视觉更居中（SVG 常用微调） */
+}
+
+.mmta-btn:hover {
+  background-color: #004a9c; /* 深一点的 hover */
+}
+
+/* Arabic font for RTL pages */
+html[dir="rtl"],
+html[dir="rtl"] body {
+  font-family: 'NotoKufiArabic', sans-serif;
+}
+
+/* Arabic font override for navbar */
+html[dir="rtl"] .navbar-brand,
+html[dir="rtl"] .nav-link,
+html[dir="rtl"] .mmta-text,
+html[dir="rtl"] .lang-switch a,
+html[dir="rtl"] .dropdown-item {
+  font-family: 'NotoKufiArabic', sans-serif !important;
+}
+
+.navbar-tools {
+  display: flex;
+  flex-wrap: nowrap !important;   /* 不允许换行 */
+  white-space: nowrap;             /* 强制所有元素保持在同一行 */
+}
+
+
+
+
 
