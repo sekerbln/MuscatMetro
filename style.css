@@ -20,26 +20,6 @@ body {
   font-family: 'PPNeueMontreal', sans-serif;
 }
 
-#top-bar {
-  background-color: #0D0D0D;
-  color: #ffffff;                   
-  width: 100%;
-  height: 40px;                     
-  display: flex;
-  align-items: center;              
-}
-
-.top-bar-text {
-  font-family: 'PPNeueMontreal', sans-serif;
-  font-weight: 800;                
-  font-size: 14px;                  
-  text-transform: uppercase;        
-  text-align: right;                
-  width: 100%;                      
-  padding-right: 80px;              
-  letter-spacing: 0px;             
-}
-
 #top-container {
 min-height:100px;
 height:auto;
@@ -81,16 +61,6 @@ font-size: 20px;
 letter-spacing: 0.5px;
 }
 
-.navbar .navbar-collapse {
-    display: flex !important;
-    align-items: center !important;
-}
-
-.navbar {
-  padding-top: 0.4rem;
-  padding-bottom: 0.4rem;
-}
-
 .slider-image {
   width: 100%;
   height: 400px;
@@ -120,7 +90,7 @@ letter-spacing: 0.5px;
 }
 
 .section-title {
-  ffont-family: 'PPNeueMontreal', sans-serif;        
+  font-family: 'PPNeueMontreal', sans-serif;
   font-size: 32px;           
   text-align: left;
   margin-bottom: 20px;
@@ -252,35 +222,6 @@ color:#ffffff;
 font-size: 11px;
 }
 
-.navbar {
-  background-color: #0D0D0D !important;
-}
-
-.navbar .nav-link,
-.navbar .navbar-brand {
-  color: #ffffff !important;
-}
-
-.navbar-brand,
-.navbar-text {
-  color: #ffffff !important;
-  font-size: 14px;
-  letter-spacing: 1px;
-  font-weight: 600;
-}
-
-.navbar-brand {
-  padding-left: 0 !important;
-  margin-left: -12px !important;
-}
-
-.navbar .nav-link:hover {
-  color: #dfe9f5 !important;
-}
-
-.navbar form {
-  margin-bottom: 0 !important;
-}
 
 /* Language switch button */
 .lang-switch {
@@ -304,34 +245,93 @@ font-size: 11px;
   text-decoration: underline;   /* 高亮样式 */
 }
 
-/* MMTA Button */
-.mmta-btn {
-  background-color: #005FC4;
-  padding: 6px 12px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  height: 38px; /* 与 search 输入框匹配 */
+.mmta-btn:hover {
+  background-color: #004a9c; /* 深一点的 hover */
+}
+
+/* Input fields (大 3 倍) */
+.trip-input {
+  width: 100%;
+  padding: 18px 20px;       /* 高度变大 */
+  margin-bottom: 15px;
+  border: 2px solid #000;   /* 边框更明显 */
+  border-radius: 14px;
+  font-size: 18px;          /* 字变大 */
+  outline: none;
+}
+
+/* Plan button (也变大 3 倍) */
+.trip-btn {
+  width: 100%;
+  background: #005FC4;
+  border: none;
+  color: white;
+  padding: 18px 20px;       /* 高度变大 */
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 600;
   cursor: pointer;
 }
 
-.mmta-text {
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 20px; /* 比搜索框文字更大 */
-  margin-right: 60px;
-  line-height: 1;
+.trip-btn:hover {
+  background: #004a9a;
 }
 
-.mmta-icon {
-  height: 20px;           /* 和文字齐平 */
-  width: auto;
-  display: block;
-  margin-top: -1px;       /* 让图标视觉更居中（SVG 常用微调） */
+.carousel-wrapper {
+  position: relative;
 }
 
-.mmta-btn:hover {
-  background-color: #004a9c; /* 深一点的 hover */
+/* 覆盖在轮播上的透明层 */
+.carousel-overlay {
+  position: absolute;
+  inset: 0;              /* 等价于 top:0; right:0; bottom:0; left:0; */
+  pointer-events: none;  /* 不挡住轮播左右箭头 */
+}
+
+/* 里面的 container 充满高度，作为对齐基准 */
+.carousel-overlay .container {
+  height: 100%;
+  position: relative;
+}
+
+/* Trip Planner 悬浮框 */
+.trip-planner-box {
+  position: absolute;
+  top: 50%;
+  right: 0;                      /* 对齐 container 的右边缘 */
+  transform: translateY(-50%);
+  background: #ffffff;
+  padding: 28px;
+  width: 380px;
+  border-radius: 16px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.2);
+  z-index: 50;
+  pointer-events: auto;          /* 自己可以点，轮播箭头也能点 */
+}
+
+/* 让 right 对齐 container */
+.container, .container-fluid, .container-lg, .container-md {
+  position: relative;
+}
+
+
+
+html[dir="rtl"] .navbar form {
+  flex-direction: row-reverse; /* 搜索按钮在左，输入框在右 */
+}
+
+html[dir="rtl"] .navbar input.form-control {
+  margin-left: 8px !important;
+  margin-right: 0 !important;
+}
+
+html[dir="rtl"] .mmta-btn {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .mmta-text {
+  margin-left: 0 !important;
+  margin-right: 12px !important;
 }
 
 /* Arabic font for RTL pages */
@@ -354,6 +354,324 @@ html[dir="rtl"] .dropdown-item {
   flex-wrap: nowrap !important;   /* 不允许换行 */
   white-space: nowrap;             /* 强制所有元素保持在同一行 */
 }
+
+html[dir="rtl"] .line-color {
+  padding-left: 16px !important;   /* 给圆圈留空间 */
+  justify-content: flex-start !important; /* 或 flex-end，看你想靠右还是靠左 */
+}
+
+html[dir="rtl"] .section-title {
+  text-align: right !important;
+}
+
+html[dir="rtl"] * {
+  font-family: 'NotoKufiArabic', sans-serif !important;
+}
+
+/* This is a CSS comment */
+
+/* Prevent navbar from breaking into 2 lines
+
+.navbar,
+.navbar .navbar-collapse {
+  flex-wrap: nowrap !important;
+}
+
+*/
+
+
+/* Prevent every item from wrapping in RTL */
+html[dir="rtl"] .navbar-nav,
+html[dir="rtl"] .lang-switch,
+html[dir="rtl"] .navbar-tools,
+html[dir="rtl"] form {
+  white-space: nowrap !important;
+}
+
+/* Shorter search box for Arabic (RTL) layout */
+html[dir="rtl"] .navbar form .form-control {
+  width: 140px !important;    /* 自己调：140px / 150px / 160px 均可 */
+  min-width: 0 !important;
+}
+
+/* 让阿语 Navbar 的 container 成为 Flex 容器（关键步骤）
+nav .container.px-5 {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+}
+
+*/
+
+
+/* 修复阿语搜索框与按钮紧贴的问题 */
+html[dir="rtl"] .navbar form {
+  flex-direction: row-reverse !important; /* 按钮在左 */
+  gap: 12px !important; /* <-- 关键！添加 flex gap 解决紧贴问题 */
+}
+
+/* 移除冲突的 margin-left 设置 */
+html[dir="rtl"] .navbar input.form-control {
+  margin: 0 !important;
+}
+
+/* 小屏隐藏品牌文字 */
+@media (max-width: 992px) {
+  .main-navbar .navbar-brand {
+    display: none;
+  }
+}
+
+/* 图标按钮样式（小屏搜索 / 地球） */
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #ffffff;
+  padding: 4px;
+}
+.icon-btn:focus {
+  box-shadow: none;
+}
+
+
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+
+/* =============== CLEAN NAVBAR RESET =============== */
+
+.main-navbar {
+  background-color: #0D0D0D;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+}
+
+/* Desktop brand */
+.navbar-brand {
+  color: #ffffff !important;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Desktop nav links */
+.navbar .nav-link {
+  color: #ffffff !important;
+  font-weight: 500;
+}
+.navbar .nav-link:hover {
+  color: #dfe9f5 !important;
+}
+
+/* Desktop search */
+.desktop-search input.form-control {
+  width: 180px;
+}
+.desktop-search .search-btn {
+  background: #005FC4;
+  color: #ffffff;
+  margin-left: 8px;
+  padding: 6px 14px;
+  border-radius: 6px;
+}
+
+/* Language switch */
+.lang-switch a {
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+}
+.lang-switch a.active {
+  text-decoration: underline;
+}
+
+/* MMTA button */
+.mmta-btn {
+  background-color: #005FC4;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.mmta-text {
+  color: white;
+  font-size: 18px;
+  margin-right: 8px;
+}
+.mmta-icon {
+  height: 20px;
+}
+
+/* =============== MOBILE ICON BAR =============== */
+.mobile-icons button,
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: white;
+  margin-left: 10px;
+}
+.mmta-mini-btn {
+  background-color: #005FC4;
+  padding: 6px 12px;
+  color: white;
+  font-weight: 700;
+  border-radius: 6px;
+  margin-left: 12px;
+}
+
+/* =============== HAMBURGER ICON =============== */
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* =============== RESPONSIVE BREAKPOINTS =============== */
+
+/* < 1200px → FULL MOBILE MODE */
+@media (max-width: 1399px) {
+
+  /* hide desktop brand */
+  .navbar-brand {
+    display: none !important;
+  }
+
+  /* hide desktop search / languages / MMTA */
+  .desktop-search,
+  .lang-switch,
+  .mmta-btn {
+    display: none !important;
+  }
+
+  /* collapse should be hidden by default */
+  .navbar-collapse {
+    display: none !important;
+    background: #0D0D0D;
+    padding: 15px;
+  }
+  .navbar-collapse.show {
+    display: block !important;
+  }
+
+  /* mobile icons bar layout stays on right */
+  .mobile-icons {
+    display: flex !important;
+  }
+}
+
+/* ≥1200px → DESKTOP MODE */
+@media (min-width: 1400px) {
+  .mobile-icons {
+    display: none !important;
+  }
+}
+
+/* Keep desktop search form centered vertically */
+.desktop-search {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0 !important;
+}
+
+/* === Make mobile/tablet navbar layout 2-line === */
+@media (max-width: 1399px) {
+
+  /* allow wrapping */
+  .main-navbar .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  /* hamburger stays at left */
+  .main-navbar .navbar-toggler {
+    order: 0;
+  }
+
+  /* icon bar stays at right */
+  .main-navbar .mobile-icons {
+    order: 1;
+    margin-left: auto;
+    display: flex !important;
+  }
+
+  /* collapsed menu should appear on next line */
+  .main-navbar .navbar-collapse {
+    order: 2;
+    flex-basis: 100%;
+    width: 100%;
+    display: none !important;
+    background: #0D0D0D;
+    padding: 12px 0;
+  }
+
+  /* show menu when toggled */
+  .main-navbar .navbar-collapse.show {
+    display: block !important;
+  }
+}
+
+/* Show hamburger menu up to tablet/laptop size */
+@media (max-width: 1399px) {
+  .main-navbar .navbar-toggler {
+    display: block !important;
+  }
+}
+
+/* ---- SECOND NAV BAR (TOP-CONTAINER) ---- */
+
+.top-nav {
+  border-bottom: 1px solid #000;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+
+.top-nav .navbar-brand img{
+  height: 60px;
+  width: auto;
+}
+
+.top-nav .nav-link {
+  color: #000 !important;
+  font-size: 18px;
+  font-weight: 500;
+  padding-left: 18px !important;
+  padding-right: 18px !important;
+}
+
+.top-nav .nav-link:hover {
+  color: #005FC4 !important;
+}
+
+@media (min-width: 992px) {
+  /* 桌面：显示横排菜单 */
+  .top-nav .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto !important;
+  }
+
+  .top-nav .navbar-nav {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@media (max-width: 991px) {
+  /* 移动端：菜单竖排显示 */
+  .top-nav .navbar-nav {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .top-nav .nav-link {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    text-align: left;
+    border-top: 1px solid #eee;
+  }
+}
+
 
 
 
